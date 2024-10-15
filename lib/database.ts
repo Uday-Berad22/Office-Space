@@ -7,11 +7,11 @@ export interface User {
   user_id: string;
   name: string;
   used_tokens: number;
-  access_level: 'user' | 'admin';
+  access_level: "user" | "admin";
   parking_allotment?: string;
 }
 
 export async function getDatabase() {
   const client = await clientPromise;
-  return client.db("parking_system");
+  return client.db("OfficeSpace");
 }

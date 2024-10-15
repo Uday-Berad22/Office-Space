@@ -2,13 +2,13 @@ name: Cron-Job-For-Clear-Bookings
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 16 * * *"
+    - cron: "15 12 * * *"
 jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
       - name: daily-clear-bookings
         run: |
-          curl --request POST \
+          curl --request GET \
           --url 'https://office-space-kohl.vercel.app/api/clear-bookings' \
-          --header 'Authorization:  ${{ secrets.ACTION_KEY }}'
+          --header 'Authorization: ${{ secrets.ACTION_KEY }}'
