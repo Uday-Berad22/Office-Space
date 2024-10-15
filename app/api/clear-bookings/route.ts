@@ -2,9 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDatabase } from "@/lib/database";
 
 export async function GET(request: NextRequest) {
-  if (
-    request.headers.get("Authorization") !== `Bearer ${process.env.CRON_SECRET}`
-  ) {
+  if (request.headers.get("Authorization") !== `${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: `Unauthorized ` }, { status: 401 });
   }
   try {

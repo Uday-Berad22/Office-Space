@@ -54,9 +54,7 @@ function selectIds(users: [string, number][], numToSelect: number): string[] {
 }
 
 export async function GET(request: NextRequest) {
-  if (
-    request.headers.get("Authorization") !== `Bearer ${process.env.CRON_SECRET}`
-  ) {
+  if (request.headers.get("Authorization") !== `${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: `Unauthorized ` }, { status: 401 });
   }
 
