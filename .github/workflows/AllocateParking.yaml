@@ -11,4 +11,4 @@ jobs:
         run: |
           curl --request GET \
           --url 'https://office-space-pune.vercel.app/api/allocate-parking' \
-          --header 'authorization: ${{ secrets.ACTION_KEY }}'
+          --header 'authorization: ${{ secrets.AUTHORIZATION }}'

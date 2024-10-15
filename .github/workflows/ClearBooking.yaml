@@ -11,4 +11,4 @@ jobs:
         run: |
           curl --request GET \
           --url 'https://office-space-pune.vercel.app/api/clear-bookings' \
-          --header 'Authorization: ${{ secrets.ACTION_KEY }}'
+          --header 'Authorization: ${{ secrets.AUTHORIZATION }}'
