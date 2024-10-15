@@ -10,5 +10,5 @@ jobs:
       - name: daily-clear-bookings
         run: |
           curl --request GET \
-          --url 'https://office-space-kohl.vercel.app/api/clear-bookings' \
+          --url 'https://office-space-pune.vercel.app/api/clear-bookings' \
           --header 'Authorization: ${{ secrets.ACTION_KEY }}'
