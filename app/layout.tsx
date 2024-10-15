@@ -41,7 +41,9 @@ export default function RootLayout({
         >
           <ClerkProvider>
             <Navbar />
-            <main className="container mx-auto p-4">{children}</main>
+            <main className="container mx-auto min-h-[80vh] p-4">
+              {children}
+            </main>
             <Toaster />
             <Footer />
           </ClerkProvider>
