@@ -3,7 +3,10 @@ import { getDatabase } from "@/lib/database";
 
 export async function GET(request: NextRequest) {
   if (request.headers.get("Authorization") !== `${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: `Unauthorized ` }, { status: 401 });
+    return NextResponse.json(
+      { error: `${request.headers.get("Authorization")}` },
+      { status: 401 }
+    );
   }
   try {
     const db = await getDatabase();
