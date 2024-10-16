@@ -10,5 +10,5 @@ jobs:
       - name: daily-allocate-parking
         run: |
           curl --request GET \
-          --url 'https://office-space-pune.vercel.app/api/allocate-parking' \
+          --url 'https://office-space-sync.vercel.app/api/allocate-parking' \
           --header 'authorization: ${{ secrets.AUTHORIZATION }}'
