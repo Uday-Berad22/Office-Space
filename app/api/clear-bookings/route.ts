@@ -1,13 +1,13 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getDatabase } from "@/lib/database";
 
-export async function GET() {
-  // if (request.headers.get("Authorization") !== `${process.env.CRON_SECRET}`) {
-  //   return NextResponse.json(
-  //     { error: `${request.headers.get("Authorization")}` },
-  //     { status: 401 }
-  //   );
-  // }
+export async function GET(request: NextRequest) {
+  if (request.headers.get("Authorization") !== `${process.env.CRON_SECRET}`) {
+    return NextResponse.json(
+      { error: `Bagh :${request.headers.get("Authorization")}` },
+      { status: 200 }
+    );
+  }
   try {
     const db = await getDatabase();
 
