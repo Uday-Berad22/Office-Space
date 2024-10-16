@@ -53,7 +53,7 @@ function selectIds(users: [string, number][], numToSelect: number): string[] {
   return selectedIds;
 }
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
   if (request.headers.get("Authorization") !== `${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: `Unauthorized ` }, { status: 401 });
   }

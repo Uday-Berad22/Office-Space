@@ -9,6 +9,6 @@ jobs:
     steps:
       - name: daily-clear-bookings
         run: |
-          curl --request GET \
+          curl --request DELETE \
           --url 'https://office-space-sync.vercel.app/api/clear-bookings' \
           --header 'Authorization: ${{ secrets.AUTHORIZATION }}'

@@ -20,7 +20,7 @@ export async function GET() {
     if (!approvedBookings || approvedBookings.length === 0) {
       return NextResponse.json(
         { message: "No approved bookings found" },
-        { status: 404 }
+        { status: 200 }
       );
     }
 

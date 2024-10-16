@@ -1,12 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDatabase } from "@/lib/database";
 
-export async function GET(request: NextRequest) {
+export async function DELETE(request: NextRequest) {
   if (request.headers.get("Authorization") !== `${process.env.CRON_SECRET}`) {
-    return NextResponse.json(
-      { error: `Bagh :${request.headers.get("Authorization")}` },
-      { status: 200 }
-    );
+    return NextResponse.json({ error: `UNAUTHORIZATION` }, { status: 401 });
   }
   try {
     const db = await getDatabase();

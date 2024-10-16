@@ -9,6 +9,6 @@ jobs:
     steps:
       - name: daily-allocate-parking
         run: |
-          curl --request GET \
+          curl --request POST \
           --url 'https://office-space-sync.vercel.app/api/allocate-parking' \
           --header 'authorization: ${{ secrets.AUTHORIZATION }}'
