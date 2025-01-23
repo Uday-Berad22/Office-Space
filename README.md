@@ -45,3 +45,7 @@ To run this application locally:
 3. Start the application: Use the respective commands to run the backend server and frontend client (refer to documentation for specific commands).
 
 4. Access the application: Visit http://localhost:3000 (or as configured) to access the app locally.
+
+
+Previews:
+![image](https://github.com/user-attachments/assets/069cdc1c-413a-4089-8766-8835879b40c6)
