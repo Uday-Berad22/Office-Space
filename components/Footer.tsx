@@ -18,8 +18,8 @@ const Footer: React.FC = () => {
         >
           <div className="flex-1 ">
             <span className=" font-bold">
-              &copy; {new Date().getFullYear()} All rights reserved. Commvault
-              Pune
+              &copy; {new Date().getFullYear()} All rights reserved. ParkPoolX
+              Inc.
             </span>
           </div>
         </motion.div>

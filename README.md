@@ -18,7 +18,7 @@ OfficeSpace is sponsored by my company, which recognizes the need for a comprehe
 
 ## Key Features
 
-### 1. Smart Parking Allocation
+### 1. Smart ocation
    - **Pre-Request Submission:** Employees can enter details like their location, expected arrival, and departure times before a daily 12 AM cutoff.
    - **Smart Allocation Algorithm:** Prioritizes parking spots based on factors such as proximity to the office, traffic conditions, and employee work schedules.
    - **Real-Time Notifications:** Employees receive notifications about their parking status, helping reduce uncertainty and save time.
