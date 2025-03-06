@@ -1,5 +1,5 @@
-import { ObjectId } from 'mongodb'
-import { getDatabase } from '@/lib/database';
+import { ObjectId } from "mongodb";
+import { getDatabase } from "@/lib/database";
 
 interface User {
   _id: ObjectId;
@@ -11,13 +11,12 @@ interface User {
 
 interface Allocation {
   name: string;
-  
 }
 
 export async function allocateParking(): Promise<Allocation[]> {
   const db = await getDatabase();
-  const users = await db.collection('users').find({}).toArray() as User[];
-  
+  const users = (await db.collection("users").find({}).toArray()) as User[];
+
   const selectedIds = selectIds(users, 8);
   const allocations = await updateAllocationStatus(selectedIds);
   return allocations;
@@ -25,7 +24,7 @@ export async function allocateParking(): Promise<Allocation[]> {
 
 function selectIds(users: User[], numToSelect: number): ObjectId[] {
   users.sort((a, b) => a.tokens - b.tokens);
-  
+
   const groups: { [key: number]: ObjectId[] } = {};
   for (const { _id, tokens } of users) {
     if (!groups[tokens]) {
@@ -33,10 +32,12 @@ function selectIds(users: User[], numToSelect: number): ObjectId[] {
     }
     groups[tokens].push(_id);
   }
-  
+
   const selectedIds: ObjectId[] = [];
-  const tokenCounts = Object.keys(groups).map(Number).sort((a, b) => a - b);
-  
+  const tokenCounts = Object.keys(groups)
+    .map(Number)
+    .sort((a, b) => a - b);
+
   for (const tokenCount of tokenCounts) {
     const group = groups[tokenCount];
     if (group.length + selectedIds.length <= numToSelect) {
@@ -50,26 +51,30 @@ function selectIds(users: User[], numToSelect: number): ObjectId[] {
       break;
     }
   }
-  
+
   return selectedIds;
 }
 
-async function updateAllocationStatus(selectedIds: ObjectId[]): Promise<Allocation[]> {
+async function updateAllocationStatus(
+  selectedIds: ObjectId[]
+): Promise<Allocation[]> {
   const db = await getDatabase();
-  
+
   // Update selected users' status and increment their tokens
   await db.collection("users").updateMany(
     { _id: { $in: selectedIds } },
-    { 
+    {
       $set: { status: "allotted" },
-      $inc: { tokens: 1 }
+      $inc: { tokens: 1 },
     }
   );
 
   // Fetch and return the updated allocations
-  const allocations = await db.collection("users").find(
-    { _id: { $in: selectedIds } }
-  ).project({ name: 1, parkingSpot: 1, _id: 0 }).toArray() as Allocation[];
+  const allocations = (await db
+    .collection("users")
+    .find({ _id: { $in: selectedIds } })
+    .project({ name: 1, parkingSpot: 1, _id: 0 })
+    .toArray()) as Allocation[];
 
   return allocations;
 }
